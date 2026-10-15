@@ -36,12 +36,14 @@
             textbookBindingSource = new BindingSource(components);
             txtTextbook = new TextBox();
             listOrder = new ListBox();
+            osztályBindingSource = new BindingSource(components);
             button1 = new Button();
             button2 = new Button();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             checkBox1 = new CheckBox();
-            osztályBindingSource = new BindingSource(components);
+            textBoxSunOfOrders = new TextBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)studentBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textbookBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osztályBindingSource).BeginInit();
@@ -101,6 +103,10 @@
             listOrder.Size = new Size(222, 349);
             listOrder.TabIndex = 0;
             // 
+            // osztályBindingSource
+            // 
+            osztályBindingSource.DataSource = typeof(Osztály);
+            // 
             // button1
             // 
             button1.Location = new Point(475, 112);
@@ -109,6 +115,7 @@
             button1.TabIndex = 2;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -118,6 +125,7 @@
             button2.TabIndex = 3;
             button2.Text = "button2";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // textBox1
             // 
@@ -146,15 +154,29 @@
             checkBox1.Text = "checkBox1";
             checkBox1.UseVisualStyleBackColor = true;
             // 
-            // osztályBindingSource
+            // textBoxSunOfOrders
             // 
-            osztályBindingSource.DataSource = typeof(Osztály);
+            textBoxSunOfOrders.Location = new Point(240, 443);
+            textBoxSunOfOrders.Name = "textBoxSunOfOrders";
+            textBoxSunOfOrders.Size = new Size(222, 23);
+            textBoxSunOfOrders.TabIndex = 6;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(240, 425);
+            label1.Name = "label1";
+            label1.Size = new Size(126, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Rendelések összértéke:";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(989, 450);
+            ClientSize = new Size(989, 490);
+            Controls.Add(label1);
+            Controls.Add(textBoxSunOfOrders);
             Controls.Add(checkBox1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
@@ -190,5 +212,7 @@
         private TextBox textBox2;
         private CheckBox checkBox1;
         private BindingSource osztályBindingSource;
+        private TextBox textBoxSunOfOrders;
+        private Label label1;
     }
 }

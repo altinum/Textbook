@@ -26,7 +26,7 @@ namespace TextBook
             studentBindingSource.DataSource = sf.ToList();
         }
 
-        private void studentBindingSource_CurrentChanged(object sender, EventArgs e)
+        void ListOrders()
         {
             if (studentBindingSource.Current == null) return;
 
@@ -41,12 +41,69 @@ namespace TextBook
                          };
 
             osztályBindingSource.DataSource = llllll.ToList();
-           
-
-           
 
 
+            var sumOfOrders = (from x in context.Orders
+                              where x.StudentFk == ssssss.StudentId
+                              select x.TextbookFkNavigation.Price).Sum();
 
+            textBoxSunOfOrders.Text = sumOfOrders.ToString();
+
+        }
+
+        private void studentBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+            ListOrders();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var s = studentBindingSource.Current as Models.Student;
+            var t = textbookBindingSource.Current as Models.Textbook;
+
+            if (t == null || s == null) return;
+
+            var o = new Models.Order();
+
+            o.StudentFk = s.StudentId;
+            o.TextbookFk = t.TextbookId;
+
+            context.Orders.Add(o);
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred while saving changes: " + ex.Message);
+            }
+
+            ListOrders();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var o = osztályBindingSource.Current as Osztály;
+
+            if (o == null) return;
+
+            var orderToDelete = from x in context.Orders
+                                where x.OrderSk == o.Rendelésazonos0tó
+                                select x;
+
+            try
+            {
+                context.Orders.Remove(orderToDelete.FirstOrDefault());
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred while deleting order: " + ex.Message);
+            }
+
+            
+            ListOrders();
         }
     }
 }
