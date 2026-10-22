@@ -36,7 +36,6 @@ public partial class TextbookSupportContext : DbContext
 
         modelBuilder.Entity<Student>(entity =>
         {
-            entity.Property(e => e.StudentId).ValueGeneratedNever();
             entity.Property(e => e.Neptun).IsFixedLength();
         });
 

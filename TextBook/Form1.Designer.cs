@@ -44,9 +44,14 @@
             checkBox1 = new CheckBox();
             textBoxSunOfOrders = new TextBox();
             label1 = new Label();
+            buttonAdd = new Button();
+            menuStrip1 = new MenuStrip();
+            fileToolStripMenuItem = new ToolStripMenuItem();
+            exportToXMLToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)studentBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textbookBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)osztályBindingSource).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // listStudent
@@ -170,11 +175,45 @@
             label1.TabIndex = 7;
             label1.Text = "Rendelések összértéke:";
             // 
+            // buttonAdd
+            // 
+            buttonAdd.Location = new Point(159, 442);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(75, 23);
+            buttonAdd.TabIndex = 8;
+            buttonAdd.Text = "Add";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(989, 24);
+            menuStrip1.TabIndex = 9;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exportToXMLToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new Size(37, 20);
+            fileToolStripMenuItem.Text = "&File";
+            // 
+            // exportToXMLToolStripMenuItem
+            // 
+            exportToXMLToolStripMenuItem.Name = "exportToXMLToolStripMenuItem";
+            exportToXMLToolStripMenuItem.Size = new Size(180, 22);
+            exportToXMLToolStripMenuItem.Text = "Export to &XML";
+            exportToXMLToolStripMenuItem.Click += exportToXMLToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(989, 490);
+            Controls.Add(buttonAdd);
             Controls.Add(label1);
             Controls.Add(textBoxSunOfOrders);
             Controls.Add(checkBox1);
@@ -187,12 +226,16 @@
             Controls.Add(listTextbook);
             Controls.Add(listOrder);
             Controls.Add(listStudent);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)studentBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)textbookBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)osztályBindingSource).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,5 +257,9 @@
         private BindingSource osztályBindingSource;
         private TextBox textBoxSunOfOrders;
         private Label label1;
+        private Button buttonAdd;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem exportToXMLToolStripMenuItem;
     }
 }
